@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="icon" href="../icon.png" type="image/x-icon">
+</head>
+<body>
+  <h1>Register</h1>
+  <div>
+    <form id="registerForm">
+      <input id="name" placeholder="Name" type="text" required>
+      <input id="email" placeholder="Email" type="email" required>
+      <input id="password" placeholder="Password" type="password" required>
+      <input id="phone" placeholder="Phone" type="tel" required>
+
+      <div>
+        <label for="company">Company</label>
+        <input id="company" name="userType" type="radio" value="Company">
+        <label for="passenger">Passenger</label>
+        <input id="passenger" name="userType" type="radio" value="Passenger">
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script src="./register.js"></script>
+</body>
+</html>
