@@ -1,0 +1,78 @@
+:root{
+  --pink: #ffb8d1;
+  --dark: #170312;
+  --blue: #87f6ff;
+  --red : #A30B37;
+  --sage: #D4CB92;
+  font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+}
+body {
+  background-color: var(--dark);
+  color: var(--blue);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.container{
+  width: 100%;
+  height: 97vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.cont{
+  width: 35%;
+  background-color: var(--red);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5%;
+}
+input {
+  margin-bottom: 16px;
+  width: 200px;
+  padding-left: 10px;
+}
+a {
+  text-decoration: none;
+  color: var(--pink);
+}
+a:hover {
+  text-decoration: underline;
+  color: var(--blue);
+}
+button {
+  width: 150px;
+  height: 40px;
+  border-radius: 5%;
+  color: var(--dark);
+  background-color: var(--blue);
+  margin: 10px;
+  padding: 10px;
+}
+button:hover {
+  cursor: pointer;
+  color: var(--blue);
+  background-color: var(--dark);
+}
+#company{
+  width: 10px;
+}
+#passenger{
+  width: 10px;
+}
+
+.Form{
+  display: flex;
+  width: 100%;
+}
+#registerForm{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
