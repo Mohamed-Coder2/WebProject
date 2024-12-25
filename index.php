@@ -22,5 +22,13 @@
       <a href="./pages/passenger/profile.html">Passenger Profile</a>
     </div>
   </div>
+
+  <?php
+    $connection = pg_connect("host=localhost dbname=webproject user=postgres password=100603");
+    if(!$connection) {
+      echo "DB Connection Failed";
+      exit;
+    }
+  ?>
 </body>
 </html>

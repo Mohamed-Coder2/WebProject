@@ -47,16 +47,21 @@ body {
 /*link Containers*/
 .loginRoutes{
   display: flex;
+  align-items: center;
   justify-content: space-between;
   width: 20%;
+  min-width: 10%;
 }
 .companyRoutes{
   display: flex;
   justify-content: space-between;
   width: 20%;
+  min-width: 10%;
+
 }
 .passengerRoutes{
   display: flex;
   justify-content: space-between;
   width: 20%;
+  min-width: 10%;
 }
