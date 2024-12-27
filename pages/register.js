@@ -1,4 +1,4 @@
-document.getElementById('registerForm').addEventListener('submit', function(e) {
+document.getElementById('registerForm').addEventListener('submit', async function (e) {
   e.preventDefault();
 
   const name = document.getElementById('name').value.trim();
@@ -24,23 +24,4 @@ document.getElementById('registerForm').addEventListener('submit', function(e) {
     phone,
     userType: userType.value,
   };
-
-  console.log('Form Data:', userData);
-
-  // fetch('https://database-endpoint.com/register', {
-  //   method: 'POST',
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //   },
-  //   body: JSON.stringify(userData),
-  // })
-  //   .then(response => response.json())
-  //   .then(data => {
-  //     console.log('Success:', data);
-  //     alert('Registration successful!');
-  //   })
-  //   .catch(error => {
-  //     console.error('Error:', error);
-  //     alert('Registration failed!');
-  //   });
 });
