@@ -1,0 +1,46 @@
+:root {
+  --pink: #ffb8d1;
+  --dark: #170312;
+  --blue: #87f6ff;
+  --red: #a30b37;
+  --sage: #d4cb92;
+  font-family: "Segoe UI", Tahoma, Verdana, sans-serif;
+}
+body {
+  background-color: var(--dark);
+  color: var(--blue);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  background-color: var(--red);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.name {
+  display: flex;
+  background-color: var(--pink);
+  justify-content: space-evenly;
+  align-items: center;
+}
+button {
+  width: 150px;
+  height: 40px;
+  border-radius: 5%;
+  color: var(--dark);
+  background-color: var(--blue);
+}
+
+button:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  color: var(--blue);
+  background-color: var(--dark);
+}
+
