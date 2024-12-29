@@ -15,53 +15,69 @@ if (isset($_SESSION["user_id"])) {
   $password = $row['password'];
 
   // Handle search input
-  $search_term = isset($_POST['search_flight']) ? mysqli_real_escape_string($conn, $_POST['search_flight']) : '';
-  
-  // Modify flights query based on the search term
+  $search_from = isset($_POST['search_from']) ? mysqli_real_escape_string($conn, $_POST['search_from']) : '';
+  $search_to = isset($_POST['search_to']) ? mysqli_real_escape_string($conn, $_POST['search_to']) : '';
+
+  // Modify flights query based on the search terms
   $flights_query = "SELECT * FROM flights";
-  if (!empty($search_term)) {
-    $flights_query .= " WHERE name LIKE '%$search_term%'";
+  $conditions = [];
+
+  if (!empty($search_from)) {
+      $conditions[] = "`From` LIKE '%$search_from%'";
   }
+  if (!empty($search_to)) {
+      $conditions[] = "`To` LIKE '%$search_to%'";
+  }
+
+  if (!empty($conditions)) {
+      $flights_query .= " WHERE " . implode(" AND ", $conditions);
+  }
+
   $flights_result = mysqli_query($conn, $flights_query);
 
   echo "<h1>Passenger Home</h1>";
   echo "<h2>Welcome, $name</h2>";
-  
+
   // Search bar form
   echo "
-    <form method='POST' action=''>
-      <input type='text' name='search_flight' placeholder='Search for flights' value='$search_term'>
-      <input type='submit' value='Search'>
-    </form>
+  <form method='POST' action=''>
+    <input type='text' name='search_from' placeholder='Search from location' value='$search_from'>
+    <input type='text' name='search_to' placeholder='Search to location' value='$search_to'>
+    <input type='submit' value='Search'>
+  </form>
   ";
 
   if (mysqli_num_rows($flights_result) > 0) {
-    echo "<h4>Available Flights</h4>";
-    echo "<table border='1'>
-        <tr>
-          <th>Flight Name</th>
-          <th>Flight Number</th>
-          <th>Fees</th>
-          <th>Departure</th>
-          <th>Action</th>
-        </tr>";
-    while ($flight = mysqli_fetch_assoc($flights_result)) {
-      echo "<tr>
-          <td>{$flight['name']}</td>
-          <td>{$flight['flight_number']}</td>
-          <td>{$flight['fees']}</td>
-          <td>{$flight['start_date']}</td>
-          <td>
-            <form method='POST' action=''>
-              <input type='hidden' name='flight_id' value='{$flight['flight_id']}'>
-              <input type='submit' name='book_flight' value='Book'>
-            </form>
-          </td>
+      echo "<h4>Available Flights</h4>";
+      echo "<table border='1'>
+          <tr>
+            <th>Flight Name</th>
+            <th>Flight Number</th>
+            <th>Fees</th>
+            <th>Departure</th>
+            <th>From</th>
+            <th>To</th>
+            <th>Action</th>
           </tr>";
-    }
-    echo "</table>";
+      while ($flight = mysqli_fetch_assoc($flights_result)) {
+          echo "<tr>
+              <td>{$flight['name']}</td>
+              <td>{$flight['flight_number']}</td>
+              <td>{$flight['fees']}</td>
+              <td>{$flight['start_date']}</td>
+              <td>{$flight['From']}</td>
+              <td>{$flight['To']}</td>
+              <td>
+                <form method='POST' action=''>
+                  <input type='hidden' name='flight_id' value='{$flight['flight_id']}'>
+                  <input type='submit' name='book_flight' value='Book'>
+                </form>
+              </td>
+              </tr>";
+      }
+      echo "</table>";
   } else {
-    echo "<p>No flights available.</p>";
+      echo "<p>No flights available.</p>";
   }
 
   if (isset($_POST['book_flight'])) {
