@@ -1,46 +1,43 @@
 <?php
-$con = mysqli_connect("localhost", "root", "", "webProject");
+  include "../config.php";
 
-if (!$con) {
-    die("Connection failed: " . mysqli_connect_error());
-}
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $userType = $_POST['userType'];
 
     if ($userType == 'Company') {
-        $companyName = $_POST['companyName'];
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-        $phone = $_POST['phone'];
-        $bio = $_POST['bio'];
-        $address = $_POST['address'];
-        $location = $_POST['location'];
+      $companyName = $_POST['companyName'];
+      $email = $_POST['email'];
+      $password = $_POST['password'];
+      $phone = $_POST['phone'];
+      $bio = $_POST['bio'];
+      $address = $_POST['address'];
+      $location = $_POST['location'];
 
-        // $logo = $_POST['logo'];
+      // $logo = $_POST['logo'];
 
-        $q = "INSERT INTO `users` (`user_type`, `name`, `email`, `password`, `phone`, `bio`, `address`, `location`) VALUES ('$userType', '$companyName', '$email', '$password', '$phone', '$bio', '$address', '$location')";
+      $q = "INSERT INTO `users` (`user_type`, `name`, `email`, `password`, `phone`, `bio`, `address`, `location`) VALUES ('$userType', '$companyName', '$email', '$password', '$phone', '$bio', '$address', '$location')";
     } else {
-        $name = $_POST['name'];
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-        $phone = $_POST['phone'];
-        // $passportImg = $_POST['passportImg'];
+      $name = $_POST['name'];
+      $email = $_POST['email'];
+      $password = $_POST['password'];
+      $phone = $_POST['phone'];
+      // $passportImg = $_POST['passportImg'];
 
-        $q = "INSERT INTO `users` (`user_type`, `name`, `email`, `password`, `phone`) VALUES ('$userType', '$name', '$email', '$password', '$phone')";
+      $q = "INSERT INTO `users` (`user_type`, `name`, `email`, `password`, `phone`) VALUES ('$userType', '$name', '$email', '$password', '$phone')";
     }
 
-    if (mysqli_query($con, $q)) {
-        echo "<script>alert('Data inserted')</script>";
-        header('Location: login.php');
+    if (mysqli_query($conn, $q)) {
+      echo "<script>alert('Data inserted')</script>";
+      header('Location: login.php');
     } else {
-        echo "<script>alert('Error Inserting Data: " . mysqli_error($con) . "')</script>";
+      echo "<script>alert('Error Inserting Data: " . mysqli_error($conn) . "')</script>";
     }
 
-    mysqli_close($con);
-} else {
-    echo "<p>Not in IF</p>";
-}
+    mysqli_close($conn);
+  } else {
+      echo "<p>Not in IF</p>";
+  }
 ?>
 
 <!DOCTYPE html>
@@ -92,7 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
           input.setAttribute("name", field.name);
           input.setAttribute("placeholder", field.placeholder);
           input.setAttribute("type", field.type);
-          if (field.name !== "location") input.required = true;
+          if (field.name !== "location" || field.name !== "logo") input.required = true;
           form.appendChild(input);
         });
       }
