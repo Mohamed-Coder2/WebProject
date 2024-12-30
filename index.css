@@ -1,0 +1,65 @@
+:root {
+  --pink: #ffb8d1;
+  --dark: #170312;
+  --blue: #87f6ff;
+  --red: #a30b37;
+  --sage: #d4cb92;
+  font-family: "Segoe UI", Tahoma, Verdana, sans-serif;
+}
+body {
+  background-color: var(--dark);
+  color: var(--blue);
+}
+/*Links*/
+.Routes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 97vh;
+}
+.loginRoutes a {
+  text-decoration: none;
+  color: var(--pink);
+}
+.companyRoutes a {
+  text-decoration: none;
+  color: var(--pink);
+}
+.passengerRoutes a {
+  text-decoration: none;
+  color: var(--pink);
+}
+/*Link Hover effects*/
+.loginRoutes a:hover {
+  text-decoration: underline;
+  color: var(--blue);
+}
+.companyRoutes a:hover {
+  text-decoration: underline;
+  color: var(--blue);
+}
+.passengerRoutes a:hover {
+  text-decoration: underline;
+  color: var(--blue);
+}
+/*link Containers*/
+.loginRoutes {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 20%;
+  min-width: 10%;
+}
+.companyRoutes {
+  display: flex;
+  justify-content: space-between;
+  width: 20%;
+  min-width: 10%;
+}
+.passengerRoutes {
+  display: flex;
+  justify-content: space-between;
+  width: 20%;
+  min-width: 10%;
+}
